@@ -1,0 +1,85 @@
+========================================================================
+             LAPORAN ANALISIS SEGMENTASI PELANGGAN MALL                 
+========================================================================
+
+1. EKSPLORASI DATASET
+- Jumlah Pelanggan: 200
+- Rata-rata Umur: 38.9 tahun
+- Rata-rata Pendapatan Tahunan: 60.6 k$
+- Rata-rata Skor Pengeluaran (1-100): 50.2
+- Distribusi Gender: Female (56.0%), Male (44.0%)
+
+2. SKENARIO 1: SEGMENTASI INCOME VS SPENDING SCORE
+Skenario ini mengelompokkan pelanggan berdasarkan pendapatan tahunan dan skor pengeluaran.
+Karakteristik tiap kelompok:
+
+> Segmen: Boros / Pendapatan Rendah-Pengeluaran Tinggi
+  - Jumlah Anggota: 22 pelanggan (11.0%)
+  - Rata-rata Umur: 25.3 tahun
+  - Rata-rata Pendapatan: 25.7 k$
+  - Rata-rata Skor Belanja: 79.4
+  - Rekomendasi Pemasaran: Gunakan teknik penjualan instan (flash sale), diskon menarik, bundling produk murah, dan iklan media sosial yang kekinian.
+
+> Segmen: Hati-hati / Pendapatan Tinggi-Pengeluaran Rendah
+  - Jumlah Anggota: 35 pelanggan (17.5%)
+  - Rata-rata Umur: 41.1 tahun
+  - Rata-rata Pendapatan: 88.2 k$
+  - Rata-rata Skor Belanja: 17.1
+  - Rekomendasi Pemasaran: Tawarkan promosi berbasis nilai (value-for-money), tunjukkan kualitas produk jangka panjang, hindari spam iklan tidak berkelas.
+
+> Segmen: Hemat / Pendapatan Rendah-Pengeluaran Rendah
+  - Jumlah Anggota: 23 pelanggan (11.5%)
+  - Rata-rata Umur: 45.2 tahun
+  - Rata-rata Pendapatan: 26.3 k$
+  - Rata-rata Skor Belanja: 20.9
+  - Rekomendasi Pemasaran: Berikan penawaran harga termurah, kupon diskon dasar, dan hindari penawaran barang-barang mewah.
+
+> Segmen: Rata-rata / Standar
+  - Jumlah Anggota: 81 pelanggan (40.5%)
+  - Rata-rata Umur: 42.7 tahun
+  - Rata-rata Pendapatan: 55.3 k$
+  - Rata-rata Skor Belanja: 49.5
+  - Rekomendasi Pemasaran: Kampanye pemasaran reguler, diskon musiman, serta promosi produk tingkat menengah yang stabil.
+
+> Segmen: Sultan / Pendapatan Tinggi-Pengeluaran Tinggi (Target Utama)
+  - Jumlah Anggota: 39 pelanggan (19.5%)
+  - Rata-rata Umur: 32.7 tahun
+  - Rata-rata Pendapatan: 86.5 k$
+  - Rata-rata Skor Belanja: 82.1
+  - Rekomendasi Pemasaran: Target utama untuk produk premium, program loyalitas eksklusif, dan penawaran khusus bernilai tinggi.
+
+
+3. SKENARIO 2: SEGMENTASI MULTIDIMENSI (AGE, INCOME, SPENDING) MENGGUNAKAN PCA
+Skenario ini menggabungkan Umur ke dalam analisis, lalu mereduksi dimensinya menjadi 2 komponen utama sebelum dikelompokkan.
+
+> Segmen PCA: Muda, Boros / Konsumtif Sedang
+  - Jumlah Anggota: 38 pelanggan (19.0%)
+  - Rata-rata Umur: 25.6 tahun
+  - Rata-rata Pendapatan: 32.6 k$
+  - Rata-rata Skor Belanja: 67.5
+  - Rekomendasi Pemasaran: Gunakan tren media sosial terkini, influencer marketing, dan produk gaya hidup trendi.
+
+> Segmen PCA: Muda, Sultan / Konsumtif Premium
+  - Jumlah Anggota: 58 pelanggan (29.0%)
+  - Rata-rata Umur: 30.0 tahun
+  - Rata-rata Pendapatan: 79.1 k$
+  - Rata-rata Skor Belanja: 70.8
+  - Rekomendasi Pemasaran: Layanan VIP, concierge belanja pribadi, barang edisi terbatas.
+
+> Segmen PCA: Pendapatan Tinggi, Hati-hati / Kaya & Bijak
+  - Jumlah Anggota: 35 pelanggan (17.5%)
+  - Rata-rata Umur: 41.7 tahun
+  - Rata-rata Pendapatan: 88.2 k$
+  - Rata-rata Skor Belanja: 17.3
+  - Rekomendasi Pemasaran: Investasi jangka panjang, penawaran properti, asuransi, barang bernilai aset tinggi.
+
+> Segmen PCA: Senior, Hemat / Konservatif
+  - Jumlah Anggota: 69 pelanggan (34.5%)
+  - Rata-rata Umur: 52.1 tahun
+  - Rata-rata Pendapatan: 46.3 k$
+  - Rata-rata Skor Belanja: 40.1
+  - Rekomendasi Pemasaran: Kampanye bernuansa keluarga, kenyamanan berbelanja, program loyalitas tradisional, dan pelayanan pelanggan yang ramah.
+
+========================================================================
+                   AKHIR LAPORAN ANALISIS PELANGGAN                     
+========================================================================
