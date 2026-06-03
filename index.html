@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mall Customers Segment Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="glass-bg-glow"></div>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header animate-fade-in">
+            <div class="badge">Customer Segmentation System</div>
+            <h1>Mall Customers <span>Analytics</span></h1>
+            <p>Sistem Analitik Segmentasi Pelanggan Interaktif menggunakan K-Means Clustering & PCA</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-navigation animate-fade-in">
+            <button class="tab-btn active" data-tab="predictor">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                Segment Predictor
+            </button>
+            <button class="tab-btn" data-tab="visualizations">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+                Visualisasi Klaster
+            </button>
+            <button class="tab-btn" data-tab="strategy">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Strategi Bisnis
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Predictor Tab -->
+            <section id="predictor" class="tab-pane active animate-slide-up">
+                <div class="grid-2col">
+                    <!-- Form Input -->
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h2>Prediksi Segmen Pelanggan</h2>
+                            <p>Masukkan profil pelanggan di bawah ini untuk melihat klasifikasi segmen secara instan.</p>
+                        </div>
+                        <form id="prediction-form" class="prediction-form">
+                            <div class="form-group">
+                                <div class="label-row">
+                                    <label for="input-age">Umur (Age)</label>
+                                    <span id="val-age" class="val-badge">35 tahun</span>
+                                </div>
+                                <input type="range" id="input-age" min="18" max="70" value="35" class="slider">
+                                <div class="slider-labels">
+                                    <span>18 th</span>
+                                    <span>70 th</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-row">
+                                    <label for="input-income">Pendapatan Tahunan (Annual Income)</label>
+                                    <span id="val-income" class="val-badge">60 k$</span>
+                                </div>
+                                <input type="range" id="input-income" min="15" max="137" value="60" class="slider">
+                                <div class="slider-labels">
+                                    <span>15 k$</span>
+                                    <span>137 k$</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="label-row">
+                                    <label for="input-spending">Skor Belanja (Spending Score)</label>
+                                    <span id="val-spending" class="val-badge">50</span>
+                                </div>
+                                <input type="range" id="input-spending" min="1" max="100" value="50" class="slider">
+                                <div class="slider-labels">
+                                    <span>1 (Hemat)</span>
+                                    <span>100 (Boros)</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <span class="btn-text">Analisis & Prediksi</span>
+                                <div class="btn-glow"></div>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Result Panel -->
+                    <div class="card glass-card result-card" id="result-panel">
+                        <div class="empty-state" id="empty-result">
+                            <div class="icon-pulse">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m10 15 5-5-5-5"></path></svg>
+                            </div>
+                            <h3>Siap Menganalisis</h3>
+                            <p>Geser nilai parameter dan klik tombol "Analisis & Prediksi" untuk melihat segmentasi dan saran strategi pemasaran.</p>
+                        </div>
+
+                        <div class="result-content hidden" id="result-content">
+                            <div class="result-header">
+                                <span class="result-badge">Hasil Prediksi</span>
+                                <h3>Karakteristik Segmen</h3>
+                            </div>
+
+                            <!-- Scenario 1 Result -->
+                            <div class="scenario-result-box">
+                                <div class="scenario-title">Skenario 1 (Pendapatan vs Pengeluaran)</div>
+                                <div class="segment-name" id="s1-name">-</div>
+                                <div class="segment-pill-wrapper">
+                                    <span class="pill" id="s1-income-pill">Pendapatan: -</span>
+                                    <span class="pill" id="s1-spending-pill">Pengeluaran: -</span>
+                                </div>
+                                <div class="recommendation-box" id="s1-rec">
+                                    <strong>Saran Pemasaran:</strong> <span class="rec-text">-</span>
+                                </div>
+                            </div>
+
+                            <!-- Scenario 2 Result -->
+                            <div class="scenario-result-box">
+                                <div class="scenario-title">Skenario 2 (Umur, Pendapatan, Pengeluaran dengan PCA)</div>
+                                <div class="segment-name" id="s2-name">-</div>
+                                <div class="segment-pill-wrapper">
+                                    <span class="pill" id="s2-age-pill">Umur: -</span>
+                                    <span class="pill" id="s2-pca-pill">Komponen PCA: -</span>
+                                </div>
+                                <div class="recommendation-box" id="s2-rec">
+                                    <strong>Saran Pemasaran:</strong> <span class="rec-text">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visualizations Tab -->
+            <section id="visualizations" class="tab-pane animate-slide-up">
+                <div class="visuals-container">
+                    <div class="visuals-selector">
+                        <button class="visual-toggle active" data-scenario="1">Skenario 1 (Income vs Spending)</button>
+                        <button class="visual-toggle" data-scenario="2">Skenario 2 (PCA 3-Fitur)</button>
+                    </div>
+
+                    <!-- Scenario 1 Visuals -->
+                    <div class="visual-display active" id="visuals-s1">
+                        <div class="grid-2col">
+                            <div class="card glass-card visual-card">
+                                <h3>Penentuan K Optimal (Elbow)</h3>
+                                <div class="img-wrapper">
+                                    <img src="plots/scenario1_elbow.png" alt="Skenario 1 Elbow Method" onerror="this.src='scenario1_elbow.png'; this.onerror=null;">
+                                </div>
+                                <p class="caption">Grafik WCSS (inertia) vs K. Penurunan melambat tajam pada K=5, menunjukkan 5 klaster adalah representasi terbaik.</p>
+                            </div>
+                            <div class="card glass-card visual-card">
+                                <h3>Sebaran Klaster & Centroid</h3>
+                                <div class="img-wrapper">
+                                    <img src="plots/scenario1_clusters.png" alt="Skenario 1 Clusters" onerror="this.src='scenario1_clusters.png'; this.onerror=null;">
+                                </div>
+                                <p class="caption">Plot sebaran pelanggan dalam 5 kelompok utama. Simbol 'X' hitam mewakili titik tengah (centroid) masing-masing kelompok.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 2 Visuals -->
+                    <div class="visual-display" id="visuals-s2">
+                        <div class="grid-2col">
+                            <div class="card glass-card visual-card">
+                                <h3>Penentuan K Optimal (Elbow PCA)</h3>
+                                <div class="img-wrapper">
+                                    <img src="plots/scenario2_elbow.png" alt="Skenario 2 Elbow Method" onerror="this.src='scenario2_elbow.png'; this.onerror=null;">
+                                </div>
+                                <p class="caption">Metode Elbow diterapkan pada 2 Principal Components (PC1 & PC2). Titik siku (elbow) optimal dideteksi pada K=4.</p>
+                            </div>
+                            <div class="card glass-card visual-card">
+                                <h3>Proyeksi 2D PCA & Hasil Klaster</h3>
+                                <div class="img-wrapper">
+                                    <img src="plots/scenario2_clusters.png" alt="Skenario 2 Clusters" onerror="this.src='scenario2_clusters.png'; this.onerror=null;">
+                                </div>
+                                <p class="caption">Pelanggan diproyeksikan ke dalam ruang 2D PCA yang menjelaskan 77.57% variabilitas data dari gabungan Umur, Pendapatan, dan Pengeluaran.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Strategy Tab -->
+            <section id="strategy" class="tab-pane animate-slide-up">
+                <div class="card glass-card">
+                    <h2>Panduan Strategi Kampanye Terarah</h2>
+                    <p>Berdasarkan pengelompokan demografis dan transaksi, berikut adalah pembagian fokus kampanye iklan dan promo untuk setiap profil:</p>
+                    
+                    <div class="strategy-list">
+                        <div class="strategy-item border-sultan">
+                            <div class="strategy-item-header">
+                                <span class="badge-sultan">Sultan / Premium</span>
+                                <h3>Target Utama (Pendapatan & Pengeluaran Tinggi)</h3>
+                            </div>
+                            <p>Pelanggan dengan daya beli tinggi yang sangat aktif berbelanja. Fokus pada penawaran bernilai tinggi.</p>
+                            <ul>
+                                <li><strong>Saluran Pemasaran:</strong> Email personal VIP, WhatsApp eksklusif, Undangan event tertutup.</li>
+                                <li><strong>Jenis Promo:</strong> Akses awal produk edisi terbatas (early-access), layanan premium tanpa biaya tambahan, concierge belanja.</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-item border-careful">
+                            <div class="strategy-item-header">
+                                <span class="badge-careful">Hati-hati / Bijak</span>
+                                <h3>Pendapatan Tinggi, Hemat Pengeluaran</h3>
+                            </div>
+                            <p>Pelanggan dengan uang berlebih tetapi sangat selektif dalam membelanjakannya. Menghargai nilai jangka panjang produk.</p>
+                            <ul>
+                                <li><strong>Saluran Pemasaran:</strong> Iklan edukatif tentang keandalan produk, ulasan/testimoni ahli.</li>
+                                <li><strong>Jenis Promo:</strong> Paket garansi panjang, promosi "value-for-money", cashback atau program tabungan loyalitas.</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-item border-spendy">
+                            <div class="strategy-item-header">
+                                <span class="badge-spendy">Boros / Impulsif</span>
+                                <h3>Pendapatan Rendah, Pengeluaran Tinggi</h3>
+                            </div>
+                            <p>Kelompok berusia lebih muda yang sangat responsif terhadap tren visual, tren sosial, dan diskon instan.</p>
+                            <ul>
+                                <li><strong>Saluran Pemasaran:</strong> Iklan visual Instagram/TikTok, KOL/Influencer marketing.</li>
+                                <li><strong>Jenis Promo:</strong> Flash Sale berbatas waktu, voucher diskon instan 50%, bundling produk murah kekinian.</li>
+                            </ul>
+                        </div>
+
+                        <div class="strategy-item border-frugal">
+                            <div class="strategy-item-header">
+                                <span class="badge-frugal">Hemat / Ekonomis</span>
+                                <h3>Pendapatan Rendah, Pengeluaran Rendah</h3>
+                            </div>
+                            <p>Pelanggan yang sangat sensitif terhadap harga dan memiliki anggaran belanja minim.</p>
+                            <ul>
+                                <li><strong>Saluran Pemasaran:</strong> Banner fisik diskon di toko, kupon kertas, SMS blast hemat.</li>
+                                <li><strong>Jenis Promo:</strong> Beli 1 gratis 1 (BOGO), diskon kebutuhan pokok dasar, produk clearance sale dengan harga murah.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="app-footer animate-fade-in">
+            <p>&copy; 2026 Mall Customers Segmenter System. Dikembangkan menggunakan Python (K-Means, PCA) & Vanilla JS.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
