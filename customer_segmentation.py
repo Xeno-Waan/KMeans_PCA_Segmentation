@@ -209,8 +209,8 @@ def run_scenario_2(df):
     plt.savefig(os.path.join(PLOTS_DIR, "scenario2_elbow.png"), dpi=300)
     plt.close()
     
-    # Biasanya 4 atau 5 cluster optimal untuk PCA data
-    k_final = opt_k if opt_k in [4, 5, 6] else 4
+    # Gunakan K=5 agar sesuai dengan notebook Google Colab Anda
+    k_final = 5
     print(f"Menggunakan K={k_final} untuk K-Means clustering pada Skenario 2.")
     
     kmeans = KMeans(n_clusters=k_final, random_state=42, n_init=10)

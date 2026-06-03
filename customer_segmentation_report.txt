@@ -52,32 +52,39 @@ Karakteristik tiap kelompok:
 3. SKENARIO 2: SEGMENTASI MULTIDIMENSI (AGE, INCOME, SPENDING) MENGGUNAKAN PCA
 Skenario ini menggabungkan Umur ke dalam analisis, lalu mereduksi dimensinya menjadi 2 komponen utama sebelum dikelompokkan.
 
+> Segmen PCA: Muda & Pendapatan Sedang & Skor Belanja Rendah
+  - Jumlah Anggota: 49 pelanggan (24.5%)
+  - Rata-rata Umur: 30.5 tahun
+  - Rata-rata Pendapatan: 61.6 k$
+  - Rata-rata Skor Belanja: 52.6
+  - Rekomendasi Pemasaran: Penawaran standar yang menyeimbangkan kegunaan dan harga rasional.
+
 > Segmen PCA: Muda, Boros / Konsumtif Sedang
-  - Jumlah Anggota: 38 pelanggan (19.0%)
-  - Rata-rata Umur: 25.6 tahun
-  - Rata-rata Pendapatan: 32.6 k$
-  - Rata-rata Skor Belanja: 67.5
+  - Jumlah Anggota: 28 pelanggan (14.0%)
+  - Rata-rata Umur: 24.8 tahun
+  - Rata-rata Pendapatan: 27.8 k$
+  - Rata-rata Skor Belanja: 73.5
   - Rekomendasi Pemasaran: Gunakan tren media sosial terkini, influencer marketing, dan produk gaya hidup trendi.
 
 > Segmen PCA: Muda, Sultan / Konsumtif Premium
-  - Jumlah Anggota: 58 pelanggan (29.0%)
-  - Rata-rata Umur: 30.0 tahun
-  - Rata-rata Pendapatan: 79.1 k$
-  - Rata-rata Skor Belanja: 70.8
+  - Jumlah Anggota: 30 pelanggan (15.0%)
+  - Rata-rata Umur: 31.7 tahun
+  - Rata-rata Pendapatan: 90.9 k$
+  - Rata-rata Skor Belanja: 83.3
   - Rekomendasi Pemasaran: Layanan VIP, concierge belanja pribadi, barang edisi terbatas.
 
 > Segmen PCA: Pendapatan Tinggi, Hati-hati / Kaya & Bijak
-  - Jumlah Anggota: 35 pelanggan (17.5%)
-  - Rata-rata Umur: 41.7 tahun
-  - Rata-rata Pendapatan: 88.2 k$
-  - Rata-rata Skor Belanja: 17.3
+  - Jumlah Anggota: 34 pelanggan (17.0%)
+  - Rata-rata Umur: 43.3 tahun
+  - Rata-rata Pendapatan: 88.5 k$
+  - Rata-rata Skor Belanja: 18.6
   - Rekomendasi Pemasaran: Investasi jangka panjang, penawaran properti, asuransi, barang bernilai aset tinggi.
 
 > Segmen PCA: Senior, Hemat / Konservatif
-  - Jumlah Anggota: 69 pelanggan (34.5%)
-  - Rata-rata Umur: 52.1 tahun
-  - Rata-rata Pendapatan: 46.3 k$
-  - Rata-rata Skor Belanja: 40.1
+  - Jumlah Anggota: 59 pelanggan (29.5%)
+  - Rata-rata Umur: 53.6 tahun
+  - Rata-rata Pendapatan: 43.8 k$
+  - Rata-rata Skor Belanja: 38.5
   - Rekomendasi Pemasaran: Kampanye bernuansa keluarga, kenyamanan berbelanja, program loyalitas tradisional, dan pelayanan pelanggan yang ramah.
 
 ========================================================================

@@ -26,16 +26,18 @@ const MODEL_PARAMS = {
             [0.03014116, 0.9988316, -0.03777499]   // PC2 projection
         ],
         centroids: [
-            [0.97771498, -0.49877873],  // Cluster 0: Senior, Hemat
-            [-1.04671072, 0.65699063],  // Cluster 1: Muda, Sultan
-            [-1.09453687, -1.11878664], // Cluster 2: Muda, Boros
-            [0.99540827, 1.10926194]    // Cluster 3: Pendapatan Tinggi, Hati-hati
+            [ 1.09697628, -0.59078397], // Cluster 0: Senior, Hemat / Konservatif
+            [-0.49176835,  0.01616075], // Cluster 1: Muda, Rata-rata / Seimbang
+            [ 1.03849522,  1.1199511 ], // Cluster 2: Pendapatan Tinggi, Hati-hati / Kaya & Bijak
+            [-1.32287898,  1.09155054], // Cluster 3: Muda, Sultan / Konsumtif Premium
+            [-1.29455069, -1.31287414]  // Cluster 4: Muda, Boros / Konsumtif Sedang
         ],
         labels: [
-            { name: "Senior, Hemat / Konservatif", desc: "Pelanggan usia menengah ke atas yang berbelanja dengan bijak dan ekonomis.", class: "color-standard", rec: "Kampanye bernuansa keluarga, kenyamanan berbelanja, program loyalitas tradisional, dan pelayanan pelanggan yang ramah." },
-            { name: "Muda, Sultan / Konsumtif Premium", desc: "Pelanggan muda dengan penghasilan tinggi yang konsumtif.", class: "color-sultan", rec: "Layanan VIP, concierge belanja pribadi, barang edisi terbatas." },
-            { name: "Muda, Boros / Konsumtif Sedang", desc: "Pelanggan muda berpenghasilan rendah yang loyalitas belanjanya cukup tinggi.", class: "color-spendy", rec: "Gunakan tren media sosial terkini, influencer marketing, dan produk gaya hidup trendi." },
-            { name: "Pendapatan Tinggi, Hati-hati / Kaya & Bijak", desc: "Pelanggan mapan yang tidak mudah tergiur promosi konsumtif biasa.", class: "color-careful", rec: "Investasi jangka panjang, penawaran properti, asuransi, barang bernilai aset tinggi." }
+            { name: "Senior, Hemat / Konservatif", desc: "Pelanggan senior dengan pengeluaran dan pendapatan rendah-sedang.", class: "color-standard", rec: "Kampanye bernuansa keluarga, kenyamanan berbelanja, program loyalitas tradisional, dan pelayanan pelanggan yang ramah." },
+            { name: "Muda, Rata-rata / Seimbang", desc: "Pelanggan muda dengan pendapatan dan pengeluaran rata-rata.", class: "color-frugal", rec: "Kampanye pemasaran reguler, diskon musiman, serta promosi produk tingkat menengah yang stabil." },
+            { name: "Pendapatan Tinggi, Hati-hati / Kaya & Bijak", desc: "Pelanggan mapan dengan pendapatan tinggi yang selektif dan hemat belanja.", class: "color-careful", rec: "Investasi jangka panjang, penawaran properti, asuransi, barang bernilai aset tinggi." },
+            { name: "Muda, Sultan / Konsumtif Premium (Target Utama)", desc: "Pelanggan muda dengan pendapatan tinggi dan sangat gemar belanja barang mewah.", class: "color-sultan", rec: "Layanan VIP, concierge belanja pribadi, barang edisi terbatas." },
+            { name: "Muda, Boros / Konsumtif Sedang", desc: "Pelanggan muda berpenghasilan rendah namun sangat impulsif saat belanja.", class: "color-spendy", rec: "Gunakan tren media sosial terkini, influencer marketing, dan produk gaya hidup trendi." }
         ]
     }
 };
